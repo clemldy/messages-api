@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  concern :api_base do |options|
+    mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+        sessions:  "#{options[:namespace]}/sessions",
+        registrations:  "#{options[:namespace]}/registrations"
+      }
+  end
+  mount ActionCable.server => '/cable'
+
+  namespace :api, defaults: { format: :json } do
+    concerns :api_base, namespace: "api"
+  end
+
 end

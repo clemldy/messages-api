@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Ruby on Rails API app is created for sending messages from one sender to one recipient
 
-Things you may want to cover:
+* Action cable has been implemented because it is the best rails tools for real-time features
 
-* Ruby version
+* Authentification with Devise
 
-* System dependencies
+* Database in Postgresql
 
-* Configuration
+* API created for an React front end app
 
-* Database creation
+* With your React app, you need to install ActionCableJS via npm
 
-* Database initialization
+* Jobs has been implemented for better scaling
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 

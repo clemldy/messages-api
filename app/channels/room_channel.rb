@@ -7,17 +7,10 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def send_message(data)
-    user_id = data['sender_id']
-    room_id = data['room_id']
-    content = data['content']
-
-    raise 'No Message!' if content.blank?
-
-    Message.create!(
-      room_id: room_id,
-      user_id: user_id,
-      content: content
-    )
+    room = Room.find(data['room_id'])
+    if room.present?
+      room.messages.create!(user_id: data['sender_id'], content: data['content'])
+    end
   end
 
 end
